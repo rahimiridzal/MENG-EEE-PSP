@@ -1,0 +1,15 @@
+id,Storage_method,name,Discharge_power_cost,Charge_power_cost,power_cost,energy_cost,Charge_efficiency,Discharge_efficiency,eff
+1,Mechanical, Pumped_hydro_storage, 2000, , 2000, 20, , , 85
+2,Mechanical, Compressed_air_energy_storage, 1150, , 1150, 30, , , 67
+3,Chemical, Power_H2_power_brayton_cycle, 1100, 1400, 2500, 15, 77, 40, 31
+4,Chemical, Power_H2_power_combined_cycle, 1100, 1400, 2500, 15, 77, 55, 42
+5,Chemical, Power_H2_power_fuel_cell, 2000, 1400, 3400, 15, 77, 60, 46
+6,Chemical, Power_syngas_power_brayton_cycle, 1100, 1700, 2800, 5, 65, 40, 26
+7,Chemical, Power_syngas_power_combined_cycle, 1100, 1700, 2800, 5, 65, 55, 36
+8,Chemical, Power_syngas_power_fuel_cell, 2000, 1700, 3700, 5, 65, 60, 39
+9,Electrochemical, Aqueous_sulfur_flow_batteries, 2000, , 2000, 20, , , 75
+10,Electrochemical, Vanadium_redox_flow_batteries, 600, , 600, 200, , , 80
+11,Thermal, Multijunction_photovoltaic_thermal_storage, 350, , 350, 36, , , 55
+12,Thermal, Reciprocating_heat_pump_energy_storage, 900, , 900, 25, , , 72
+13,Thermal, Firebrick_resistance_heated_storage_brayton_cycle, 1100, 50, 1150, 10, 98, 40, 39
+14,Thermal, Firebrick_resistance_heated_storage_combined_cycle, 1100, 350, 1150, 10, 98, 55, 54
