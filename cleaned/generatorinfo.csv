@@ -1,0 +1,3 @@
+id,name,installedMW,minPrate,fixedCost,varCost,startCostperMW,rampupRate,rampdownRate,minupTime,mindownTime,af
+1,OCGT,0,0.4,195000,195,20,1,1,1,1,0.22
+2,CCGT,0,0.4,350000,135,51,0.6,0.6,4,4,0.93

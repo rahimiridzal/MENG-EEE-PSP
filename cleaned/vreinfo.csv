@@ -1,0 +1,4 @@
+﻿id,name,installedMW,fixedCost,varCost
+1,Solar,70000,210000,1
+2,Onshore,14000,635000,8
+3,Offshore,50000,1299000,4
