@@ -66,7 +66,15 @@ function CEM(vreinfo, generatorinfo, storageinfo, halfhourlydemand, halfhourlyvr
     spinning = reserve == "spinning" || reserve == "all" ? 1 : 0
     flexible = reserve == "flexible" || reserve == "all" ? 1 : 0
     @constraint(model, c09[t in T], 
-        sum(R_GEN[g,t] for g in G) + sum(R_DISCHARGE[s,t] for s in S) >= fixed*1800 + spinning*(0.03 * halfhourlydemand[halfhourlydemand.hh.==t,:load][1]) + flexible*(0.04 * halfhourlyvrecf[halfhourlyvrecf.vre_id.==1,:cf][1] * vreinfo[vreinfo.name.=="Solar",:installedMW][1] + 0.1 * (halfhourlyvrecf[halfhourlyvrecf.vre_id.==2,:cf][1] * vreinfo[vreinfo.name.=="Onshore",:installedMW][1] + halfhourlyvrecf[halfhourlyvrecf.vre_id.==3,:cf][1] * vreinfo[vreinfo.name.=="Offshore",:installedMW][1])))
+        sum(R_GEN[g,t] for g in G) + sum(R_DISCHARGE[s,t] for s in S) >= 
+        fixed * 1800 + 
+        spinning * 0.03 * halfhourlydemand[halfhourlydemand.hh.==t,:load][1] + 
+        flexible * (0.04 * (halfhourlyvrecf[halfhourlyvrecf.vre_id.==1,:cf][1] * 
+                vreinfo[vreinfo.name.=="Solar",:installedMW][1]) + 0.1 * 
+                (halfhourlyvrecf[halfhourlyvrecf.vre_id.==2,:cf][1] * 
+                vreinfo[vreinfo.name.=="Onshore",:installedMW][1] + 
+                halfhourlyvrecf[halfhourlyvrecf.vre_id.==3,:cf][1] * 
+                vreinfo[vreinfo.name.=="Offshore",:installedMW][1])))
     
     # VRE CURTAIL CONSTRAINT
     @constraint(model, c11[v in V, t in T], 
