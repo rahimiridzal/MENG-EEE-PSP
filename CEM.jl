@@ -1,7 +1,7 @@
 using JuMP, HiGHS, DataFrames
 
 function CEM(vreinfo, generatorinfo, storageinfo, halfhourlydemand, halfhourlyvrecf; 
-    budget=20e9, voll=100e3, cd_rho=5, reserve="all")
+    budget=20e9, voll=100e3, cd_rho=10, reserve="all", silent=true)
 
     # SETS
     V = vreinfo.id
@@ -13,6 +13,9 @@ function CEM(vreinfo, generatorinfo, storageinfo, halfhourlydemand, halfhourlyvr
     # INITIATE MODEL
     model = Model()
     set_optimizer(model, HiGHS.Optimizer)
+    if silent
+        set_silent(model)
+    end
 
     # DECISION VARIABLES
     @variables(model, begin
@@ -39,18 +42,18 @@ function CEM(vreinfo, generatorinfo, storageinfo, halfhourlydemand, halfhourlyvr
     @expression(model, C_CURT,
         sum(0.5 * vreinfo[vreinfo.id.==v,:varCost][1] * CURTAIL[v,t] for v in V for t in T))
     @expression(model, C_CD, 
-        cd_rho * sum(CHARGE[g,t] + DISCHARGE[g,t] for g in G for t in T))
+        0.5 * cd_rho * sum(CHARGE[g,t] + DISCHARGE[g,t] for g in G for t in T))
     @objective(model, Min, 
         C_EN + C_RES + C_NSE + C_CURT + C_CD)
 
     # BUDGET CONSTRAINT
-    @expression(model, C_Gfixed, 
+    @expression(model, C_Ginv, 
         sum(generatorinfo[generatorinfo.id.==g,:fixedCost][1] * CAPG[g] for g in G))
-    @expression(model, C_SPfixed, 
+    @expression(model, C_SPinv, 
         sum(0.8e3 * storageinfo[storageinfo.id.==s,:bestCasePowerCost][1] * CAPS[s] for s in S))
-    @expression(model, C_SEfixed, 
-        sum(0.8e3 * storageinfo[storageinfo.id.==s,:bestCaseEnergyCost][1] * SOCM[s] for s in S))
-    @expression(model, TIC, C_Gfixed + C_SPfixed + C_SEfixed)
+    @expression(model, C_SEinv, 
+        sum(0.8e3 * 0.5 * storageinfo[storageinfo.id.==s,:bestCaseEnergyCost][1] * SOCM[s] for s in S))
+    @expression(model, TIC, C_Ginv + C_SPinv + C_SEinv)
     @constraint(model, c07, TIC <= budget)
 
     # POWER BALANCE CONSTRAINT
@@ -127,12 +130,11 @@ function CEM(vreinfo, generatorinfo, storageinfo, halfhourlydemand, halfhourlyvr
         CHARGE = value.(CHARGE).data,
         DISCHARGE = value.(DISCHARGE).data,
         R_DISCHARGE = value.(R_DISCHARGE).data,
-        NET_DISCHARGE = value.(DISCHARGE).data .- value.(CHARGE).data,
         CURTAIL = value.(CURTAIL).data,
         NSE = value.(NSE).data,
-        C_Gfixed = value(C_Gfixed),
-        C_SPfixed = value(C_SPfixed),
-        C_SEfixed = value(C_SEfixed),
+        C_Ginv = value(C_Ginv),
+        C_SPinv = value(C_SPinv),
+        C_SEinv = value(C_SEinv),
         TIC = value(TIC),
         C_EN = value(C_EN),
         C_RES = value(C_RES),
