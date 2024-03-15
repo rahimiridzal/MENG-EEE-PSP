@@ -14,9 +14,9 @@ This repository contains all the necessary code and data to reproduce the result
    - `halfhourlyvrecf.csv`: Cleaned half-hourly VRE capacity factors.
 
 2. **raw**:
-   - `demanddata_2015.csv`: Raw half-hourly demand data.
-   - `ninja_pv_country_GB_merra-2_corrected.csv`: Raw solar data from renewables.ninja.
-   - `ninja_wind_country_GB_current-merra-2_corrected.csv`: Raw wind data from renewables.ninja.
+   - `demanddata_2015.csv`: Raw half-hourly GB demand data from National Grid ESO.
+   - `ninja_pv_country_GB_merra-2_corrected.csv`: Raw GB solar data from renewables.ninja.
+   - `ninja_wind_country_GB_current-merra-2_corrected.csv`: Raw GB wind data from renewables.ninja.
 
 ## Code Files
 
