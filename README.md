@@ -2,7 +2,7 @@
 Project repository for Power System Planning module at Imperial College London
 
 ## Description
-This repository contains all the necessary code and data to reproduce the results obtained in "Cost Mitigation Strategy using Long-duration Energy Storage Mitigating Cost of VRE-based System through Long Duration Energy Storage".
+This repository contains all the necessary code and data to reproduce the results obtained in "Cost Mitigation of VRE-based Systems using Long Duration Energy Storage".
 
 ## Folder Structure
 
@@ -28,8 +28,7 @@ This repository contains all the necessary code and data to reproduce the result
 
 - [National Grid ESO](https://www.nationalgrideso.com/)
 - [Renewables.ninja](https://www.renewables.ninja)
+- Powering Up Britain: Energy Security Plan (2023). Policy paper. Updated 4 April 2023.
 - Sepulveda, N.A., Jenkins, J.D., Edington, A. et al. "The design space for long-duration energy storage in decarbonized power systems." *Nat Energy* 6, 506–516 (2021). [https://doi.org/10.1038/s41560-021-00796-8](https://doi.org/10.1038/s41560-021-00796-8)
 - Grubb, M., Ferguson, T., Musat, A., Maximov, S., Zhang, Z., Price, J., & Drummond, P. (2022). "Navigating the crises in European energy: Price Inflation, Marginal Cost Pricing, and principles for electricity market redesign in an era of low-carbon transition." UCL Institute for Sustainable Resources, Navigating the Energy-Climate Crises Working Paper #3, 5 September 2022.
-- "Electricity Generation Costs" (2023). © Crown copyright 2023. This publication is licensed under the terms of the Open Government Licence v3.0 except where otherwise stated. [https://www.gov.uk/government/publications/electricity-generation-costs-2023](https://www.gov.uk/government/publications/electricity-generation-costs-2023)
-
-
+- "Electricity Generation Costs" (2023). Technical Annex: Additional LCOE estimates for generation technologies. © Crown copyright 2023. [https://www.gov.uk/government/publications/electricity-generation-costs-2023](https://www.gov.uk/government/publications/electricity-generation-costs-2023)
