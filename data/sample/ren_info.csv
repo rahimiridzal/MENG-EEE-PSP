@@ -1,3 +1,0 @@
-﻿id,name,fixed_cost,var_cost,ramp_up_rate,ramp_dn_rate
-1,wind,100,0,0.5,0.5
-2,solar,100,0,0.5,0.5

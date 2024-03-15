@@ -2,21 +2,34 @@
 Project repository for Power System Planning module at Imperial College London
 
 ## Description
-This repository contains all the necessary code and data to reproduce the results obtained in "Assessing the Economic Potential of Long Duration Energy Storage in VRE-based Power Systems".
+This repository contains all the necessary code and data to reproduce the results obtained in "Cost Mitigation Strategy using Long-duration Energy Storage Mitigating Cost of VRE-based System through Long Duration Energy Storage".
 
-## Data Description
+## Folder Structure
 
-The GB historical demand data from National Grid ESO, and historical wind and solar data from Renewables Ninja for 2015 are used for the case study. The capacity of wind and solar are adopted from the Powering Up Britain - Energy Security Plan. The sources of other relevant data are listed in the references.
+1. **data**:
+   - `vreinfo.csv`: Cleaned data about variable renewable energy (VRE) sources.
+   - `generatorinfo.csv`: Cleaned data about conventional generators.
+   - `storageinfo.csv`: Cleaned data about long duration energy storage (LDES).
+   - `halfhourlydemand.csv`: Cleaned half-hourly demand data.
+   - `halfhourlyvrecf.csv`: Cleaned half-hourly VRE capacity factors.
 
-## Data Files
-- "generatorinfo.csv":  This file contains information about power generators such as their unique ID, name, minimum power output rate, fixed and variable operating costs, and ramp-up and ramp-down rates.
-- "storageinfo.csv": This file contains information about storage technologies such as their unique ID, name, associated costs for power and energy under best and worst-case scenarios, and efficiency, also under best and worst-case scenarios.
-- "vreinfo.csv": This file contains information about variable renewable energy (VRE) such as their unique ID, name, installed power capacity (MW), and, fixed and variable operating costs.
-- "halfhourlydemand.csv": This file contains the historical half-hourly demand of Great Britain in 2015.
-- "halfhourlyvrecf.csv": This file contains the historical half-hourly capacity factor of solar, onshore, and offshore wind of Great Britain in 2015. Note that the data is extended from hourly data obtained from Renewable Ninja.
+2. **raw**:
+   - `demanddata_2015.csv`: Raw half-hourly demand data.
+   - `ninja_pv_country_GB_merra-2_corrected.csv`: Raw solar data from renewables.ninja.
+   - `ninja_wind_country_GB_current-merra-2_corrected.csv`: Raw wind data from renewables.ninja.
 
-## Notebooks
-- "
+## Code Files
 
+- `CEM.jl`: Julia script containing two functions `CEM()` and `CEMnoLDES()` for analysis.
+- `book1_res.ipynb`: Jupyter notebook for simulating Operation Cost under different Reserve Requirements. Two cases are considered: Case 1 with no storage using `CEMnoLDES()` and Case 2 with storage using `CEM()`.
+- `book2_eff.ipynb`: Jupyter notebook for simulating the Efficiency of selected LDES versus Operation Cost. It uses the `CEM()` model based on Case 2 "all" scenario from `book1_res.ipynb`.
+
+## References
+
+- [National Grid ESO](https://www.nationalgrideso.com/)
+- [Renewables.ninja](https://www.renewables.ninja)
+- Sepulveda, N.A., Jenkins, J.D., Edington, A. et al. "The design space for long-duration energy storage in decarbonized power systems." *Nat Energy* 6, 506–516 (2021). [https://doi.org/10.1038/s41560-021-00796-8](https://doi.org/10.1038/s41560-021-00796-8)
+- Grubb, M., Ferguson, T., Musat, A., Maximov, S., Zhang, Z., Price, J., & Drummond, P. (2022). "Navigating the crises in European energy: Price Inflation, Marginal Cost Pricing, and principles for electricity market redesign in an era of low-carbon transition." UCL Institute for Sustainable Resources, Navigating the Energy-Climate Crises Working Paper #3, 5 September 2022.
+- "Electricity Generation Costs" (2023). © Crown copyright 2023. This publication is licensed under the terms of the Open Government Licence v3.0 except where otherwise stated. [https://www.gov.uk/government/publications/electricity-generation-costs-2023](https://www.gov.uk/government/publications/electricity-generation-costs-2023)
 
 

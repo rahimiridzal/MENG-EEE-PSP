@@ -1,7 +1,0 @@
-id,name,installedMW,minPrate,fixedCost,varCost,startCostperMW,rampupRate,rampdownRate,minupTime,mindownTime,af
-1,OCGT,1409,0.4,195000,195,20,1,1,1,1,0.22
-2,CCGT,28785,0.4,350000,135,51,1,1,4,4,0.93
-3,Biomass,3381,0.5,1872500,40,15,0.9,0.9,0,0,0.84
-4,Hydro,1466,1,2111500,8,0,1,1,0,0,1
-5,Coal,2580,0.4,0,175,42,0.3,0.3,16,16,0.9
-6,Nuclear,5883,0.5,0,12,23,0.3,0.3,20,20,1
